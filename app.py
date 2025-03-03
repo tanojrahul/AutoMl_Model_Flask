@@ -1,9 +1,11 @@
 import pickle
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS
 import tpot
 app = Flask(__name__)
 api=Api(app)
+cors=CORS(app)
 model=pickle.load(open('tpot_model.pkl','rb'))
 
 class predict(Resource):
