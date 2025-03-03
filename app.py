@@ -12,12 +12,12 @@ class predict(Resource):
     def get(self):
         return {'message':'This is an Iris Flower Prediction API'}
     def post(self):
-        sepal_length = float(request.form['sepal_length'])
-        sepal_width = float(request.form['sepal_width'])
-        petal_length = float(request.form['petal_length'])
-        petal_width = float(request.form['petal_width'])
+        data = request.get_json()
+        sepal_length = float(data['sepal_length'])
+        sepal_width = float(data['sepal_width'])
+        petal_length = float(data['petal_length'])
+        petal_width = float(data['petal_width'])
         data = [[sepal_length, sepal_width, petal_length, petal_width]]
-
         try:
             prediction=model.predict(data)
             name=''
